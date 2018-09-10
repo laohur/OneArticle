@@ -1,0 +1,40 @@
+apt-get purge openjdk*
+
+IntelliJ idea导出web项目手工部署到tomcat
+https://blog.csdn.net/yels303/article/details/50977906
+1.sun java  、 tomcat 部署至 /usr/src/
+/usr/src/jdk1.8.0_162
+/usr/src/apache-tomcat-8.5.29
+
+安装sun jdk
+/etc/profile追加环境变量
+#set java environment
+export JAVA_HOME=/usr/src/jdk1.8.0_162 
+export JRE_HOME=$JAVA_HOME/jre 
+export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar  
+export PATH=$PATH:$JAVA_HOME/bin 
+source /etc/profile
+
+export JAVA_HOME=/usr/share/jdk1.8.0_25
+export JRE_HOME=$JAVA_HOME/jre
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar
+
+update-alternatives --install /usr/src/jdk1.8.0_162 java /opt/jdk1.7.0_25/bin/java 300
+update-alternatives --install /usr/bin/javac javac /opt/jdk1.7.0_25/bin/javac 300
+
+配置tomcat
+root@debian:~# "/usr/src/apache-tomcat-8.5.29/bin/startup.sh"
+Using CATALINA_BASE:   /usr/src/apache-tomcat-8.5.29
+Using CATALINA_HOME:   /usr/src/apache-tomcat-8.5.29
+Using CATALINA_TMPDIR: /usr/src/apache-tomcat-8.5.29/temp
+Using JRE_HOME:        /usr
+Using CLASSPATH:       /usr/src/apache-tomcat-8.5.29/bin/bootstrap.jar:/usr/src/apache-tomcat-8.5.29/bin/tomcat-juli.jar
+Tomcat started.
+
+
+vmware 导入debian9.4x64
+双网卡，一块nat连接外网，一块本地hostonly连接宿主
+ip address查找ip
+访问http://192.168.111.111:8080/train_war_exploded/login.jsp
+
