@@ -1,3 +1,7 @@
+ https的协议，tomcat+java搭建应用， java语言特性， java的几个监控工具，包括内存和性能监控，例如jstat之类的  性能压测工具，比如ab, 或者jmeter
+
+
+
 配置euleros代理
 下载jdk并解压
 已有，都放在/usr/local/
