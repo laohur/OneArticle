@@ -1,0 +1,54 @@
+Linux常用操作
+
+0.环境准备
+virtual box 免费
+lubuntu 用户名密码 u u
+lubuntu轻量，易用，是ubuntu的lxde桌面版本。简便输入中文、安装虚拟机增强功能。
+
+1.安装
+Virtualbox 启用双网卡一张nat连接外网，一张hostonly固定内网ip。lubuntu可以同时安装两张网卡。
+安装过程中，不联网，最小化安装。
+
+2. 设置 Root登陆
+grub界面长按shirft进入grub菜单
+sudo nano /etc/lightdm/lightdm.conf
+修改为 autologin-user=root
+
+3.安装程序
+apt-get -f -y install
+dpkg –I install.deb
+
+拖动程序文件，或者复制路径至终端执行
+
+apt-get install gcc
+./configure  config
+make 
+make install
+
+4.ssh
+apt-get install openssh-server
+/etc/ssh/sshd.conf
+PermitRootLogin without-password 修改为
+PermitRootLogin yes
+
+ssh-keygenu生成公钥私钥于{userhome}/.ssh/  公钥给服务端，自己登陆用私钥，匹配才成功
+mobaxterm通过ssh连接linux
+
+5  virtualbox 中共享文件夹
+需要先安装增强功能
+mount -t vboxsf share /mnt/shared
+ubuntu  sudo adduser user1 vboxsf
+
+6.安装sun jdk 
+apt install software-properties-common
+add-apt-repository ppa:webupd8team/java
+apt-get update
+apt-get install oracle-java8-installer  
+#/usr/lib/jvm/java-8-oracle/jre/bin/java 
+update-alternatives --config java
+nano /etc/environment   
+JAVA_HOME="/usr/lib/jvm/java-8-oracle"  #追加
+source /etc/environment
+echo $JAVA_HOME
+
+tomcat、idea、anaconda
