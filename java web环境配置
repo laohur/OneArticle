@@ -1,0 +1,36 @@
+1.配置mysql 5.7
+apt install mysql-server
+#用户名密码 admin passwd
+mysql -u root -p 
+grant all on *.* to admin@'%' identified by 'passwd';
+"/etc/mysql/mysql.conf.d/mysqld.cnf"
+[mysqld]
+character-set-server = utf8
+#bind-address		= 127.0.0.1
+
+
+2.配置jdk java8u171
+apt install software-properties-common
+add-apt-repository ppa:webupd8team/java
+apt-get update
+apt-get install oracle-java8-installer  
+#/usr/lib/jvm/java-8-oracle/jre/bin/java 
+update-alternatives --config java
+nano /etc/environment   
+JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+source /etc/environment
+echo $JAVA_HOME
+
+3.配置tomcat
+.tar.gz
+解压：tar zxvf FileName.tar.gz
+压缩：tar zcvf FileName.tar.gz DirName
+
+mkdir /opt/tomcat #更改权限
+tar xzvf "/opt/apache-tomcat-9.0.7.tar.gz" -C /opt/tomcat --strip-components=1
+
+ide项目部署至/opt/tomcat/webapps/
+运行"/opt/tomcat/bin/startup.sh"
+访问http://192.168.0.12:8080/
+
+0.5g内存的ubunutserver16x64 java8 mysql5.7 tomcat9
