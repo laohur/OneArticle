@@ -30,6 +30,7 @@ apt-get install openssh-server
 /etc/ssh/sshd.conf
 PermitRootLogin without-password 修改为
 PermitRootLogin yes
+sudo passwd root
 
 ssh-keygenu生成公钥私钥于{userhome}/.ssh/  公钥给服务端，自己登陆用私钥，匹配才成功
 mobaxterm通过ssh连接linux
