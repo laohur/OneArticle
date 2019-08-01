@@ -1,5 +1,10 @@
 Linux常用操作
 
+常用命令
+cd cp unzip get rsync  grep cat awk netstat ip addr
+tar -xvzf foo.tar.gz
+
+
 0.环境准备
 virtual box 免费
 lubuntu 用户名密码 u u
