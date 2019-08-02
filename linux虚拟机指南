@@ -57,3 +57,30 @@ source /etc/environment
 echo $JAVA_HOME
 
 tomcat、idea、anaconda
+
+1 设置root密码
+sudo passwd root
+# 输入两次密码
+2 修改允许连接
+# 修改配置文件
+sudo   vim /etc/ssh/sshd_config
+# 修改PermitRootLogin prohibit-password 为 PermitRootLogin yes
+3 重启ssh
+sudo systemctl restart sshd
+4 修改配置
+sudo vim /usr/share/lightdm/lightdm.conf.d/50-unity-greeter.conf
+添加如下内容
+
+greeter-show-manual-login=true
+autologin-guest=false
+进入/etc/pam.d目录，修改gdm-autologin和gdm-password文件
+
+sudo vim   gdm-autologin 
+# 注释auth required pam_succeed_if.so user != root quiet_success
+
+sudo vim gdm-password
+# 注释  auth required pam_succeed_if.so user != root quiet_success
+
+# 修改/root/.profile文件，将文件末尾的mesg n || true这一行修改成tty -s&&mesg n || true
+# 重启
+reboot
